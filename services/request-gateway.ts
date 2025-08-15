@@ -13,7 +13,7 @@ import axios, {
 } from "axios";
 import Toast from "react-native-toast-message";
 
-const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
+const service = (baseURL = process.env.EXPO_PUBLIC_API_BASE_URL!) => {
   const service = axios.create({
     baseURL,
     withCredentials: false,
@@ -22,7 +22,7 @@ const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
     headers: {
       Accept: "application/json",
       "Access-Control-Allow-Methods": "*",
-      "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
+      "x-api-key": process.env.EXPO_PUBLIC_API_KEY || "",
     },
   });
 
@@ -194,7 +194,7 @@ export const clientRequestGateway = ({
   prependUserId = true,
 }: { prependUserId?: boolean } = {}) => {
   if (prependUserId) {
-    return service(`${process.env.NEXT_PUBLIC_API_BASE_URL}`);
+    return service(`${process.env.EXPO_PUBLIC_API_BASE_URL}`);
   }
 
   return service();
