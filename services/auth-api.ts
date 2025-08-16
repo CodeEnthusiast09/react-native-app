@@ -7,7 +7,7 @@ const requestGateway = clientRequestGateway();
 export const authClientRequests = {
   signIn: (payload: InferType<typeof signInValidationSchema>) =>
     requestGateway.post({
-      url: `auth/sign-in`,
+      url: `auth/register`,
       payload,
     }),
 

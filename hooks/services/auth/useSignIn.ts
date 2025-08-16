@@ -50,7 +50,7 @@ export const useSignIn = () => {
         }
 
         // redirect to dashboard
-        router.push("/");
+        router.push("/(tabs)");
 
         // check if user has filled profile details
         // if (user?.dateOfBirth && user?.gender) {

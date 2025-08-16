@@ -37,6 +37,7 @@ export const useSignUp = () => {
         Toast.show({
           type: "success",
           text1: response?.message ?? "Sign up successful!",
+          text2: "Sign in to your account!",
         });
         // NB:: token from response would have been saved to localStorage, see "src/services/client/client-request-gateway.ts"
 
@@ -50,7 +51,7 @@ export const useSignUp = () => {
         }
 
         // redirect to dashboard
-        router.push("/");
+        router.push("/(tabs)");
 
         // check if user has filled profile details
         // if (user?.dateOfBirth && user?.gender) {

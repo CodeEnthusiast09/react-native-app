@@ -1,9 +1,12 @@
 import { ProviderWrappers } from "@/components/provider-wrappers";
 import { AuthProvider, useAuth } from "@/lib/auth-context";
+import toastConfig from "@/lib/toastConfig";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
 import { View } from "react-native";
-import { ActivityIndicator } from "react-native-paper";
+import { ActivityIndicator, PaperProvider } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 function RouteGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -17,12 +20,10 @@ function RouteGuard({ children }: { children: React.ReactNode }) {
 
     const inAuthGroup = segments[0] === "auth";
 
-    if (!isAuthenticated && !inAuthGroup) {
-      // not logged in → go to sign in
+    if (!isAuthenticated && !inAuthGroup && !isLoading) {
       router.replace("/auth/sign-in");
-    } else if (isAuthenticated && inAuthGroup) {
-      // already logged in → prevent going to auth screens
-      router.replace("/");
+    } else if (isAuthenticated && inAuthGroup && !isLoading) {
+      router.replace("/(tabs)");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, isAuthenticated, segments]);
@@ -42,12 +43,17 @@ export default function RootLayout() {
   return (
     <ProviderWrappers>
       <AuthProvider>
-        <RouteGuard>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="auth" options={{ headerShown: false }} />
-          </Stack>
-        </RouteGuard>
+        <PaperProvider>
+          <SafeAreaProvider>
+            <RouteGuard>
+              <Stack>
+                <Stack.Screen name="auth" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              </Stack>
+            </RouteGuard>
+            <Toast config={toastConfig} />
+          </SafeAreaProvider>
+        </PaperProvider>
       </AuthProvider>
     </ProviderWrappers>
   );

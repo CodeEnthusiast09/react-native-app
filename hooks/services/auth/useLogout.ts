@@ -1,26 +1,24 @@
-import { deleteFromStorage } from "@/lib/asyncStorage";
+import { useAuth } from "@/lib/auth-context";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
 export const useLogout = (onSuccess?: Function) => {
   const [isPending, setIsPending] = useState<boolean>(false);
+
   const router = useRouter();
 
-  const mutate = () => {
-    setIsPending(true);
-    // clear login data
-    deleteFromStorage("token");
-    deleteFromStorage("user-id");
-    deleteFromStorage("email");
+  const { signOut } = useAuth();
 
-    setTimeout(() => {
-      if (onSuccess) {
-        onSuccess?.();
-      } else {
-        // redirect to login page
-        router.replace("/auth/sign-in");
-      }
-    }, 1100);
+  const mutate = async () => {
+    setIsPending(true);
+    await signOut();
+    setIsPending(false);
+
+    if (onSuccess) {
+      onSuccess();
+    } else {
+      router.replace("/auth/sign-in");
+    }
   };
 
   return { mutate, isPending };

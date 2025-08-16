@@ -14,10 +14,14 @@ export const retrieveFromStorage = async <T>(
 
 export const storeInStorage = async <T>(
   key: string,
-  value: T
+  value: T | null | undefined
 ): Promise<void> => {
   try {
-    await AsyncStorage.setItem(key, JSON.stringify(value));
+    if (value === null || value === undefined) {
+      await AsyncStorage.removeItem(key);
+    } else {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+    }
   } catch (error) {
     console.error("Error storing in storage", error);
   }

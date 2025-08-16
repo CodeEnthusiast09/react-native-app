@@ -1,36 +1,19 @@
+import { useLogout } from "@/hooks/services";
 import toastConfig from "@/lib/toastConfig";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Button } from "react-native-paper";
 import Toast from "react-native-toast-message";
 
 export default function Index() {
+  const { mutate: logout, isPending: isLoggingOut } = useLogout();
   return (
     <View style={styles.view}>
-      <Text style={styles.text}>Edit app/index.tsx to edit this screen.</Text>
+      <Text style={styles.text}>This is the today&apos;s habit page</Text>
 
-      <Text style={styles.text}>Hello word, I am learning react native</Text>
+      <Button onPress={logout} loading={isLoggingOut} icon={"logout"}>
+        Log out
+      </Button>
 
-      <Text style={styles.text}>This is the like the home page</Text>
-
-      <Button
-        title="Show Success Toast"
-        onPress={() =>
-          Toast.show({
-            type: "success",
-            text1: "Success!",
-            text2: "Your item has been saved successfully.",
-          })
-        }
-      />
-      <Button
-        title="Show Error Toast"
-        onPress={() =>
-          Toast.show({
-            type: "error",
-            text1: "Error!",
-            text2: "An error occurred while saving your item.",
-          })
-        }
-      />
       <Toast config={toastConfig} />
     </View>
   );

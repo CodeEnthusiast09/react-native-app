@@ -1,18 +1,17 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { BaseToastProps } from "react-native-toast-message";
 
 const styles = StyleSheet.create({
   baseContainer: {
-    position: "absolute",
-    bottom: 10,
-    left: "5%" as `${number}%`,
-    right: "5%" as `${number}%`,
+    width: "90%",
+    alignSelf: "center",
     minHeight: 52,
     borderWidth: 1,
     padding: 10,
     borderRadius: 8,
     justifyContent: "center",
+    marginVertical: 5,
   },
   errorTitle: { color: "#D92D20", fontWeight: "bold" },
   errorText: { color: "#D92D20" },
