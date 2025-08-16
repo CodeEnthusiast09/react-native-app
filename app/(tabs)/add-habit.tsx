@@ -10,7 +10,9 @@ export default function AddhabitScreen() {
         alignItems: "center",
       }}
     >
-     <Input label="Title" />
+      <Input label="Title" labelStyle={{ fontSize: 16 }} />
+
+      <Input label="Description" labelStyle={{ fontSize: 16 }} />
     </View>
   );
 }

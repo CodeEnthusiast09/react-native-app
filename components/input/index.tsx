@@ -63,7 +63,7 @@ export const Input = forwardRef<TextInput, InputProps>(
 
           <TextInput
             ref={ref}
-            editable={!readOnly}
+            editable={!readOnly && rest.editable !== false}
             placeholder={placeholder}
             placeholderTextColor="#9CA3AF"
             value={value}
@@ -127,10 +127,11 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 48,
+    width: "100%",
     borderWidth: 1,
     borderColor: "#CBD5E1",
     borderRadius: 6,
-    paddingHorizontal: 16,
+    paddingHorizontal: 90,
     paddingVertical: 8,
     fontSize: 14,
     color: "#4B5563",
