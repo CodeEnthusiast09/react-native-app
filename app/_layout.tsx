@@ -16,13 +16,9 @@ const theme = {
   ...MD3LightTheme,
   colors: {
     ...MD3LightTheme.colors,
-    primary: "#6200ee", // your brand purple
-    onPrimary: "#f5f5f5",
-    surface: "#f5f5f5",
-    surfaceVariant: "#f5f5f5",
-    outline: "#f5f5f5",
+    primary: "#6200ee",
   },
-  roundness: 12, // match your rounded style
+  roundness: 12,
 };
 
 function RouteGuard({ children }: { children: React.ReactNode }) {

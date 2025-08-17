@@ -79,6 +79,7 @@ export default function SignInScreen() {
         <Button
           mode="contained"
           style={styles.button}
+          labelStyle={styles.buttonLabel}
           onPress={handleSubmit(handleLogin)}
           loading={isSubmitting}
           disabled={isSubmitting}

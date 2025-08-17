@@ -22,8 +22,16 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  button: {
-    marginTop: 8,
+   button: {
+    marginTop: 16,
+    height: 52,
+    borderRadius: 12,
+    padding: 8,
+  },
+
+  buttonLabel: {
+    fontSize: 16,
+    fontWeight: "bold", // optional
   },
 
   switchModeButton: {
