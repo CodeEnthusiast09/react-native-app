@@ -9,12 +9,12 @@ export const habitValidationSchema = yup.object().shape({
     .number()
     .min(0, "Streaks cannot be negative")
     .transform((value) => (Number.isNaN(value) ? null : value))
-    .required("Streaks is required"),
+    .optional(),
 
   frequency: yup.string().required("Frequency is required"),
 
   lastCompleted: yup
-    .date()
+    .string()
     .test(
       "lastCompleted",
       "Last completed date cannot be in the future",

@@ -4,5 +4,5 @@ export interface Habit {
   description: string;
   streak: number;
   frequency: string;
-  last_completed: Date;
+  last_completed: string;
 }

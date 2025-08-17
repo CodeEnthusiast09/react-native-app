@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     fontWeight: "500",
-    color: "rgba(0, 0, 0, 0.7)",
+    color: "#6B7280",
     marginBottom: 4,
   },
   asterisk: {
@@ -127,11 +127,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 48,
-    width: "100%",
     borderWidth: 1,
     borderColor: "#CBD5E1",
     borderRadius: 6,
-    paddingHorizontal: 90,
+    paddingHorizontal: 16,
     paddingVertical: 8,
     fontSize: 14,
     color: "#4B5563",

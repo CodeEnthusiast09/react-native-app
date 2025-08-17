@@ -2,6 +2,7 @@ import { APIResponse, ApiError } from "@/interfaces";
 import { clientRequest } from "@/services";
 import { habitValidationSchema } from "@/validations";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
 import Toast from "react-native-toast-message";
 import { InferType } from "yup";
 
@@ -11,6 +12,8 @@ type MutationProp = {
 
 export const useCreateHabit = (onSuccess?: Function) => {
   const queryClient = useQueryClient();
+
+  const router = useRouter();
 
   const { mutate, isPending, isSuccess } = useMutation<
     APIResponse,
@@ -32,6 +35,8 @@ export const useCreateHabit = (onSuccess?: Function) => {
         });
 
         onSuccess?.();
+
+        router.replace("/(tabs)");
       }
     },
     onError: (error: ApiError) => {

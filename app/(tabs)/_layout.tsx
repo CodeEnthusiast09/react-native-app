@@ -28,7 +28,7 @@ export default function TabsLayout() {
               color={color}
             />
           ),
-          headerShown: false,
+          // headerShown: false,
         }}
       />
 
@@ -43,7 +43,7 @@ export default function TabsLayout() {
               color={color}
             />
           ),
-          headerShown: false,
+          // headerShown: false,
         }}
       />
 
@@ -58,7 +58,7 @@ export default function TabsLayout() {
               color={color}
             />
           ),
-          headerShown: false,
+          // headerShown: false,
         }}
       />
     </Tabs>

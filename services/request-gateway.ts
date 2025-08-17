@@ -26,22 +26,24 @@ const service = (baseURL = process.env.EXPO_PUBLIC_API_BASE_URL!) => {
     },
   });
 
-  service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    // check if config has a data property, and it's not formData. Then convert all camel case keys to snake case
-    if (config?.data && !(config?.data instanceof FormData)) {
-      const data = convertCamelKeysToSnakeCase(config.data);
-      config.data = data;
-    }
+  service.interceptors.request.use(
+    async (config: InternalAxiosRequestConfig) => {
+      // check if config has a data property, and it's not formData. Then convert all camel case keys to snake case
+      if (config?.data && !(config?.data instanceof FormData)) {
+        const data = convertCamelKeysToSnakeCase(config.data);
+        config.data = data;
+      }
 
-    // get token from localStorage
-    const token = retrieveFromStorage("token");
-    if (token) {
-      // if token is present, add it to headers as Authorization
-      config.headers!["Authorization"] = `Bearer ${token}`;
-    }
+      // get token from localStorage
+      const token = await retrieveFromStorage("token");
+      if (token) {
+        // if token is present, add it to headers as Authorization
+        config.headers!["Authorization"] = `Bearer ${token}`;
+      }
 
-    return config;
-  });
+      return config;
+    }
+  );
 
   service.interceptors.response.use(
     (response: AxiosResponse) => {

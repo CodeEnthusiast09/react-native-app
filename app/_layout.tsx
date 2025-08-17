@@ -4,9 +4,26 @@ import toastConfig from "@/lib/toastConfig";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
 import { View } from "react-native";
-import { ActivityIndicator, PaperProvider } from "react-native-paper";
+import {
+  ActivityIndicator,
+  MD3LightTheme,
+  PaperProvider,
+} from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
+
+const theme = {
+  ...MD3LightTheme,
+  colors: {
+    ...MD3LightTheme.colors,
+    primary: "#6200ee", // your brand purple
+    onPrimary: "#f5f5f5",
+    surface: "#f5f5f5",
+    surfaceVariant: "#f5f5f5",
+    outline: "#f5f5f5",
+  },
+  roundness: 12, // match your rounded style
+};
 
 function RouteGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -43,7 +60,7 @@ export default function RootLayout() {
   return (
     <ProviderWrappers>
       <AuthProvider>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <SafeAreaProvider>
             <RouteGuard>
               <Stack>
