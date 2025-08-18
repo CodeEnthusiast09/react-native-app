@@ -28,7 +28,8 @@ export default function TabsLayout() {
               color={color}
             />
           ),
-          // headerShown: false,
+          headerShown: false,
+          // headerTitleAlign: "center",
         }}
       />
 

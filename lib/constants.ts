@@ -6,11 +6,11 @@ export const FREQUENCIES: Option[] = [
     value: "daily",
   },
   {
-    label: "Monthly",
-    value: "monthly",
-  },
-  {
     label: "Weekly",
     value: "weekly",
+  },
+  {
+    label: "Monthly",
+    value: "monthly",
   },
 ];

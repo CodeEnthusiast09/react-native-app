@@ -15,7 +15,7 @@ export default function StreaksScreen() {
       <Text>This is the streaks page</Text>
 
       <Button onPress={logout} loading={isLoggingOut} icon={"logout"}>
-        Log out
+        Sign out
       </Button>
     </View>
   );

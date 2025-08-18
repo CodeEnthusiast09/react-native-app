@@ -1,44 +1,28 @@
-import { useLogout } from "@/hooks/services";
-import toastConfig from "@/lib/toastConfig";
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "react-native-paper";
-import Toast from "react-native-toast-message";
+import { HabitCards } from "@/components/habit-card/index.";
+import { useHabits, useLogout } from "@/hooks/services";
+import { todaysHabitStyles } from "@/styles/todays-habit-styles";
+import { ScrollView, View } from "react-native";
+import { Button, Text } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const { data: habits, isPending } = useHabits();
+
   const { mutate: logout, isPending: isLoggingOut } = useLogout();
   return (
-    <View style={styles.view}>
-      <Text style={styles.text}>This is the today&apos;s habit page</Text>
+    <SafeAreaView style={todaysHabitStyles.container}>
+      <View style={todaysHabitStyles.header}>
+        <Text variant="headlineSmall" style={todaysHabitStyles.title}>
+          Today&apos;s Habits
+        </Text>
+        <Button onPress={logout} loading={isLoggingOut} icon={"logout"}>
+          Sign out
+        </Button>
+      </View>
 
-      <Button onPress={logout} loading={isLoggingOut} icon={"logout"}>
-        Log out
-      </Button>
-
-      <Toast config={toastConfig} />
-    </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <HabitCards data={habits ?? []} isLoading={isPending} />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-  },
-
-  text: {
-    color: "black",
-  },
-
-  link: {
-    width: 120,
-    padding: 8,
-    marginTop: 10,
-    backgroundColor: "blue",
-    color: "white",
-    fontSize: 16,
-    borderRadius: 12,
-    textAlign: "center",
-  },
-});

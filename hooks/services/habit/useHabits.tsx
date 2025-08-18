@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useHabits = () => {
   const { data, isPending, error, isError } = useQuery<Habit[]>({
-    queryKey: ["habit"],
+    queryKey: ["habits"],
     queryFn: () => {
       return clientRequest.habit.getAll();
     },
