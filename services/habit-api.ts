@@ -21,5 +21,5 @@ export const habitClientRequests = {
       payload,
     }),
 
-  delete: (id: string) => requestGateway.get(`/habit/${id}`),
+  delete: (id: string) => requestGateway.delete({ url: `/habits/${id}` }),
 };

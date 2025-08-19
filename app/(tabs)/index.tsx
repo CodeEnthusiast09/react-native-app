@@ -11,6 +11,7 @@ export default function Index() {
   const { mutate: logout, isPending: isLoggingOut } = useLogout();
   return (
     <SafeAreaView style={todaysHabitStyles.container}>
+      {/* <StatusBar backgroundColor="#f5f5f5" /> */}
       <View style={todaysHabitStyles.header}>
         <Text variant="headlineSmall" style={todaysHabitStyles.title}>
           Today&apos;s Habits
@@ -21,7 +22,8 @@ export default function Index() {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <HabitCards data={habits ?? []} isLoading={isPending} />
+        
+          <HabitCards data={habits ?? []} isLoading={isPending} />
       </ScrollView>
     </SafeAreaView>
   );

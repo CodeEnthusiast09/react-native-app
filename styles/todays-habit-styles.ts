@@ -97,4 +97,26 @@ export const todaysHabitStyles = StyleSheet.create({
     color: "#666",
     textAlign: "center",
   },
+
+  swipeActionRight: {
+    justifyContent: "center",
+    alignItems: "flex-end",
+    flex: 1,
+    borderRadius: 18,
+    marginBottom: 18,
+    marginTop: 2,
+    paddingRight: 16,
+    backgroundColor: "#4caf50",
+  },
+
+  swipeActionLeft: {
+    justifyContent: "center",
+    alignItems: "flex-start",
+    flex: 1,
+    borderRadius: 18,
+    marginBottom: 18,
+    marginTop: 2,
+    paddingLeft: 16,
+    backgroundColor: "#e53935",
+  },
 });

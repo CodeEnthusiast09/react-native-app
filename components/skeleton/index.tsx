@@ -60,7 +60,7 @@ export const Skeleton = ({
       style={[
         skeletonStyle,
         { backgroundColor: animatedColor },
-        index > 0 && { marginTop: 8 }, // Add spacing between multiple skeletons
+        index > 0 && { marginTop: 8 },
       ]}
     />
   ));
