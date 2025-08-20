@@ -15,6 +15,15 @@ export const habitClientRequests = {
       payload,
     }),
 
+  complete: (id: string) =>
+    requestGateway.post({
+      url: `/habits/${id}/completions`,
+    }),
+
+  getCompleted: () => requestGateway.get(`/habits/completed`),
+
+  getCompletedToday: () => requestGateway.get(`/habits/completed/today`),
+
   update: (payload: InferType<typeof habitValidationSchema>) =>
     requestGateway.patch({
       url: `/habits`,

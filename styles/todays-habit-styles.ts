@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 export const todaysHabitStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
     backgroundColor: "#f5f5f5",
   },
 
@@ -21,8 +22,13 @@ export const todaysHabitStyles = StyleSheet.create({
   card: {
     marginBottom: 18,
     borderRadius: 18,
-    backgroundColor: "#f7f2fa",
     boxShadow: "0px 4px 8px rgba(0,0,0,0.08)",
+    backgroundColor: "#f7f2fa",
+  },
+
+  completedCard: {
+    opacity: 0.6,
+    backgroundColor: "#ebffeb",
   },
 
   cardContent: {

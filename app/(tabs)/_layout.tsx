@@ -28,8 +28,8 @@ export default function TabsLayout() {
               color={color}
             />
           ),
-          headerShown: false,
-          // headerTitleAlign: "center",
+          // headerShown: false,
+          headerTitleAlign: "center",
         }}
       />
 
@@ -45,8 +45,9 @@ export default function TabsLayout() {
             />
           ),
           // headerShown: false,
+          headerTitleAlign: "center",
         }}
-      />
+        />
 
       <Tabs.Screen
         name="add-habit"
@@ -54,12 +55,13 @@ export default function TabsLayout() {
           title: "Add Habit",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="plus-circle"
-              size={size}
-              color={color}
+            name="plus-circle"
+            size={size}
+            color={color}
             />
           ),
           // headerShown: false,
+          headerTitleAlign: "center",
         }}
       />
     </Tabs>

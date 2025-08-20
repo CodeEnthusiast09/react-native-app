@@ -20,7 +20,7 @@ export default function AddhabitScreen() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(habitValidationSchema),
-    defaultValues: { streak: 0, lastCompleted: new Date().toISOString() },
+    defaultValues: { streak: 0 },
   });
 
   const handleCreateHabit: SubmitHandler<
